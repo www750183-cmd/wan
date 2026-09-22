@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>视频点赞评论助手</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>视频点赞评论助手</h1>
+  <div id="statusbar" class="statusbar">加载中…</div>
+  <div class="corner">
+    <button id="btnModelPanel" class="ghost">大模型设置</button>
+    <button id="btnAdvPanel" class="ghost">高级</button>
+    <button id="btnStop" class="danger small" disabled>停止</button>
+  </div>
+</header>
+
+<main class="narrow">
+  <!-- ===== 大模型设置（默认收起，只填一次） ===== -->
+  <section id="panelModel" class="card panel hidden">
+    <h2>大模型设置 <span class="muted">只填一次，以后不用再管</span></h2>
+    <p class="hint">评论内容由大模型生成。把你的 API Key 填在这里，插件会用它来写评论。</p>
+
+    <label for="llmApiKey">API Key</label>
+    <div class="row">
+      <input id="llmApiKey" type="password" placeholder="sk-...">
+      <button id="btnToggleKey" class="small">显示</button>
+      <button id="btnTestLLM" class="small">测试连接</button>
+    </div>
+    <div id="llmTestOut"></div>
+    <div id="inviteBox" class="invite hidden"></div>
+
+    <label for="quickImport">已经有配置了？整段粘贴进来，自动填好（也可以只粘 Key）</label>
+    <div class="row">
+      <input id="quickImport" type="text" spellcheck="false" placeholder="粘贴服务商给你的那串配置">
+      <button id="btnImport" class="small">填入</button>
+    </div>
+    <div id="importOut"></div>
+
+    <div class="grid">
+      <div>
+        <label for="llmModel">模型名</label>
+        <input id="llmModel" type="text" list="modelOptions">
+        <datalist id="modelOptions"></datalist>
+      </div>
+      <div>
+        <label for="llmBaseURL">服务地址</label>
+        <input id="llmBaseURL" type="text">
+      </div>
+      <div>
+        <label for="llmProvider">接口类型</label>
+        <select id="llmProvider">
+          <option value="openai-compatible">OpenAI 兼容</option>
+          <option value="anthropic">Anthropic</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions" style="margin-top:16px">
+      <button id="btnSaveModel" class="primary">保存</button>
+      <button id="btnListModels" class="small">拉取可用模型</button>
+    </div>
+  </section>
+
+  <!-- ===== 高级（正常使用完全不用打开） ===== -->
+  <section id="panelAdv" class="card panel hidden">
+    <h2>高级设置 <span class="muted">有默认值，正常不用动</span></h2>
+
+    <h3>执行内容</h3>
+    <div class="grid">
+      <div><label>&nbsp;</label><label class="inline"><input id="doLike" type="checkbox"> 点赞</label></div>
+      <div><label>&nbsp;</label><label class="inline"><input id="doComment" type="checkbox"> 评论</label></div>
+      <div><label for="maxPerRun">每次最多处理几条</label><input id="maxPerRun" type="number" min="1" max="50"></div>
+    </div>
+
+    <h3>评论怎么写</h3>
+    <label for="persona">身份</label>
+    <input id="persona" type="text">
+    <label for="intent">意图</label>
+    <textarea id="intent" spellcheck="false"></textarea>
+    <label for="extraRules">额外要求（可选）</label>
+    <textarea id="extraRules" spellcheck="false"></textarea>
+    <div class="grid">
+      <div><label for="minLen">最短字数</label><input id="minLen" type="number" min="2" max="60"></div>
+      <div><label for="maxLen">最长字数</label><input id="maxLen" type="number" min="8" max="200"></div>
+      <div><label for="draftCount">生成几条候选</label><input id="draftCount" type="number" min="1" max="8"></div>
+      <div><label for="commentSampleCount">每条抓多少条评论参考</label><input id="commentSampleCount" type="number" min="0" max="80"></div>
+    </div>
+    <label for="bannedWords">禁词（逗号分隔）</label>
+    <input id="bannedWords" type="text">
+
+    <h3>速度与风控</h3>
+    <div class="grid">
+      <div><label for="commentGapMin">每条间隔下限（秒）</label><input id="commentGapMin" type="number" min="5" max="900"></div>
+      <div><label for="commentGapMax">每条间隔上限（秒）</label><input id="commentGapMax" type="number" min="5" max="1800"></div>
+      <div><label for="dailyLimit">每天最多处理</label><input id="dailyLimit" type="number" min="1" max="2000"></div>
+      <div><label for="maxConsecutiveFailures">连续失败几次就停</label><input id="maxConsecutiveFailures" type="number" min="1" max="50"></div>
+      <div>
+        <label for="tabMode">页面打开方式</label>
+        <select id="tabMode">
+          <option value="background">后台标签页（安静，推荐）</option>
+          <option value="current">我当前的标签页（配合 F12 设备模拟用）</option>
+          <option value="window">小窗（会弹窗，但更稳）</option>
+        </select>
+      </div>
+      <div><label for="renderDelayMs">页面等待（毫秒）</label><input id="renderDelayMs" type="number" min="500" max="15000" step="500"></div>
+    </div>
+    <div class="grid">
+      <div><label>&nbsp;</label><label class="inline"><input id="skipAlreadyDone" type="checkbox"> 跳过处理过的视频</label></div>
+      <div><label>&nbsp;</label><label class="inline"><input id="enDouyin" type="checkbox"> 抖音</label></div>
+      <div><label>&nbsp;</label><label class="inline"><input id="enXhs" type="checkbox"> 小红书</label></div>
+    </div>
+
+    <h3>网页元素校准 <span class="muted">平台改版后，点赞/评论找不到位置时用</span></h3>
+    <div class="grid">
+      <div>
+        <label for="calPlatform">平台</label>
+        <select id="calPlatform">
+          <option value="douyin">抖音</option>
+          <option value="xhs">小红书</option>
+        </select>
+      </div>
+      <div style="grid-column: span 2">
+        <label for="calUrl">打开一个该平台的视频页</label>
+        <input id="calUrl" type="text" placeholder="https://www.douyin.com/video/7xxxxxxxxxxxxxxxxxx">
+      </div>
+    </div>
+    <div class="actions" style="margin-top:12px">
+      <button id="btnOpenCal" class="small">打开页面</button>
+      <button id="btnProbe" class="small primary">自检当前页</button>
+      <button id="btnCloseCal" class="small">关闭页面</button>
+      <span id="calTabInfo" class="muted"></span>
+    </div>
+    <div id="probeOut"></div>
+    <div class="pickbar">
+      <label for="pickKey">要修哪个</label>
+      <select id="pickKey"></select>
+      <button id="btnPickStart" class="small">开始拾取</button>
+      <span id="pickInfo" class="muted">点「开始拾取」，再到页面上点正确的元素</span>
+    </div>
+    <div class="tablewrap"><table id="selectorTable"></table></div>
+    <div class="actions" style="margin-top:12px">
+      <button id="btnResetSelectors" class="small danger">恢复默认</button>
+    </div>
+
+    <div class="actions" style="margin-top:22px">
+      <button id="btnSaveAdv" class="primary">保存</button>
+    </div>
+    <div id="saveOut"></div>
+  </section>
+
+  <!-- ===== 主区：就这一件事 ===== -->
+  <section class="hero">
+    <h2>粘贴视频链接，点开始就行</h2>
+    <p class="sub">它会自动完成：抓取数据 → 点赞 → 生成评论并评论 → 记一条日志</p>
+
+    <div class="row big">
+      <input id="quickInput" type="text" spellcheck="false"
+             placeholder="粘贴视频链接，或整段分享文案，也可以只输入关键词">
+      <button id="btnQuickRun" class="primary xl">开始</button>
+    </div>
+
+    <!-- 进度就显示在这里：点开始之后，用户眼睛就在这一块 -->
+    <div id="flowOut" class="progressbox hidden"></div>
+
+    <label class="inline center"><input id="quickDryRun" type="checkbox" checked> 先试跑一遍（只生成不执行，用来看效果）</label>
+    <div id="quickHint" class="quickhint"></div>
+  </section>
+
+  <!-- ===== 日志 ===== -->
+  <section class="card">
+    <h2>运行日志 <span id="logMeta" class="muted"></span></h2>
+    <div class="actions" style="margin-bottom:10px">
+      <button id="btnExportCsv">导出 CSV</button>
+      <button id="btnExportMd">导出 Markdown</button>
+      <button id="btnExportJson">导出 JSON</button>
+      <button id="btnToggleRows" class="small">展开全部</button>
+      <button id="btnClearLogs" class="danger">清空日志</button>
+    </div>
+    <div class="tablewrap tall"><table id="logTable"></table></div>
+  </section>
+</main>
+
+<script src="console.js" type="module"></script>
+</body>
+</html>

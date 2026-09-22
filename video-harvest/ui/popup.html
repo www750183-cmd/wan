@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>收录与互动助手</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { width: 380px; }
+    header { position: static; padding: 14px 16px; }
+    main { padding: 14px 16px 18px; max-width: none; }
+    .card { padding: 14px 16px; margin-bottom: 12px; }
+    .grid { grid-template-columns: 1fr 1fr; }
+  </style>
+</head>
+<body>
+<header>
+  <h1 style="font-size:15px">收录与互动助手</h1>
+  <div id="banner" class="statusbar">读取中…</div>
+</header>
+<main>
+  <section class="card">
+    <div id="stat" class="kv"></div>
+    <div class="actions">
+      <button id="btnConsole" class="primary">打开控制台</button>
+      <button id="btnStop">停止任务</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 style="font-size:13px">快速收录当前页</h2>
+    <p class="hint" id="curUrl">正在读取当前标签页…</p>
+    <div class="actions">
+      <button id="btnQuickOpen">用当前页做选择器自检</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 style="font-size:13px">最近状态</h2>
+    <div id="last" class="muted">还没有执行记录。</div>
+  </section>
+</main>
+<script src="popup.js" type="module"></script>
+</body>
+</html>

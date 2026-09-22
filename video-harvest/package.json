@@ -1,0 +1,12 @@
+{
+  "name": "video-harvest",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "多平台视频收录与互动助手 —— Chrome MV3 扩展（无构建步骤，源码即产物）",
+  "scripts": {
+    "test": "node tests/smoke.mjs && node tests/injected.mjs && node tests/boot.mjs",
+    "verify": "node tools/verify.mjs",
+    "icons": "node tools/make-icons.mjs"
+  }
+}

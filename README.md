@@ -6,8 +6,9 @@
 |---|---|
 | [`freetoken-radar/`](freetoken-radar/) | **免费大模型额度雷达** —— 自动汇总国内大模型厂商的免费 Token 额度 |
 | [`shopify-scout-cn/`](shopify-scout-cn/) | **选品侦探** —— Shopify 店铺侦察浏览器扩展（中文版） |
+| [`video-harvest/`](video-harvest/) | **视频收录互动助手** —— 抖音 / 小红书作品收录、点赞、AI 生成评论的浏览器扩展 |
 
-两个项目互不依赖，各自有独立的 README 和用法说明。
+三个项目互不依赖，各自有独立的 README 和用法说明。
 
 ---
 
@@ -57,7 +58,35 @@ npm run check     # 自检 + 单元测试
 
 ---
 
+## video-harvest
+
+抖音 / 小红书 / 视频号的作品收录与互动浏览器扩展（MV3，**零构建，源码即产物**）：
+
+```
+粘贴一个作品链接 → 抓数据（标题/点赞数/评论数/收藏数/评论区）→ 点赞 → 用 AI 生成评论并发布 → 写一条日志
+```
+
+安装：`chrome://extensions` → 开发者模式 → 加载已解压的扩展 → 选 **`video-harvest/`**（扩展本体就在这一层，`manifest.json` 直接可见）。
+
+```bash
+cd video-harvest
+node tests/smoke.mjs && node tests/injected.mjs && node tests/boot.mjs   # 167 项单测
+node tools/verify.mjs                                                    # 静态自检
+```
+
+| 文件 | 内容 |
+|---|---|
+| [`README.md`](video-harvest/README.md) | 完整用户手册：能力边界、安装、评论生成与五道校验、权限说明 |
+| [`HANDOFF.md`](video-harvest/HANDOFF.md) | 交接文档：当前状态、抖音选择器实测值、踩过的坑、验证命令 |
+| `src/lib/platforms.js` | 三平台的选择器与 URL 规则（选择器是数据，可在控制台里改） |
+
+权限只有 5 项，**不申请 `cookies`、不申请 `debugger`**。评论生成需要你自己的 OpenAI 兼容 API Key，Key 只存在浏览器本地存储里，**不入库、不上云**。
+
+详见 [`video-harvest/README.md`](video-harvest/README.md)。
+
+---
+
 ## 说明
 
-- 两个项目都不含任何 API Key、令牌或凭据。
+- 三个项目都不含任何 API Key、令牌或凭据。
 - 各自的数据来源与许可见对应子目录的 README。

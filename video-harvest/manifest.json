@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "多平台视频收录与互动助手",
+  "version": "1.0.0",
+  "description": "批量收录抖音 / 小红书 / 视频号的作品数据，并对指定作品执行点赞与评论。选择器可视化可改，内置限速、去重、dry-run 与审计日志。",
+  "minimum_chrome_version": "116",
+
+  "action": {
+    "default_popup": "ui/popup.html",
+    "default_title": "多平台视频收录与互动助手",
+    "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  },
+
+  "options_ui": { "page": "ui/console.html", "open_in_tab": true },
+
+  "background": { "service_worker": "src/sw.js", "type": "module" },
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "downloads",
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "https://*.douyin.com/*",
+    "https://*.xiaohongshu.com/*",
+    "https://*.xhscdn.com/*",
+    "https://channels.weixin.qq.com/*",
+    "https://*.weixin.qq.com/*"
+  ],
+
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+}
