@@ -1,5 +1,6 @@
-# 依赖
+# 依赖（本项目零依赖，留个保险）
 node_modules/
+package-lock.json
 
 # 编辑器与系统
 .vscode/
@@ -20,9 +21,3 @@ diag*.mjs
 *.pem
 secrets.json
 credentials.json
-
-# 浏览器测试临时产物
-.cache/
-chrome-profile/
-chrome-test-profile/
-*.crx

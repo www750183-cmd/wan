@@ -1,0 +1,16 @@
+background.js	13516
+icons/icon-128.png	1420
+icons/icon-16.png	257
+icons/icon-32.png	421
+icons/icon-48.png	554
+lib/contact.js	1795
+lib/detect.js	12240
+lib/estimate.js	8471
+lib/export.js	7942
+lib/injected.js	15649
+lib/signatures.js	42760
+lib/timeline.js	16673
+manifest.json	1052
+sidepanel/index.html	2223
+sidepanel/panel.css	8142
+sidepanel/panel.js	52025

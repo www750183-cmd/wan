@@ -1,0 +1,230 @@
+/* 选品侦探 · 侧边栏样式
+   侧边栏实际可用宽度约 340–460px，所有布局按窄屏优先设计。 */
+
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #16181d;
+  --muted: #6b7280;
+  --line: #e3e6ea;
+  --brand: #0f9d8f;
+  --brand-soft: #e6f5f3;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --danger: #b91c1c;
+  --danger-soft: #fee2e2;
+  --ok: #15803d;
+  --ok-soft: #dcfce7;
+  --chip: #eef1f4;
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14161a;
+    --panel: #1b1e24;
+    --text: #e8eaee;
+    --muted: #9aa2ad;
+    --line: #2b3038;
+    --brand: #2dd4bf;
+    --brand-soft: #16302e;
+    --warn: #fbbf24;
+    --warn-soft: #3a2f10;
+    --danger: #f87171;
+    --danger-soft: #3b1a1a;
+    --ok: #4ade80;
+    --ok-soft: #14311f;
+    --chip: #262b33;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #14161a;
+  --panel: #1b1e24;
+  --text: #e8eaee;
+  --muted: #9aa2ad;
+  --line: #2b3038;
+  --brand: #2dd4bf;
+  --brand-soft: #16302e;
+  --warn: #fbbf24;
+  --warn-soft: #3a2f10;
+  --danger: #f87171;
+  --danger-soft: #3b1a1a;
+  --ok: #4ade80;
+  --ok-soft: #14311f;
+  --chip: #262b33;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.55 -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+/* ── 顶栏 ── */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 10px 12px; background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+.brand { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.brand-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--brand); flex: none;
+  box-shadow: 0 0 0 3px var(--brand-soft);
+}
+.brand-name { font-weight: 600; font-size: 13px; }
+.brand-sub {
+  color: var(--muted); font-size: 11px;
+  max-width: 190px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.topbar-actions { display: flex; gap: 4px; flex: none; }
+.icon-btn {
+  border: 1px solid var(--line); background: var(--panel); color: var(--text);
+  width: 26px; height: 26px; border-radius: 7px; cursor: pointer;
+  font-size: 12px; line-height: 1; display: grid; place-items: center;
+}
+.icon-btn:hover { background: var(--chip); }
+.icon-btn.on { background: var(--brand-soft); border-color: var(--brand); color: var(--brand); }
+
+/* ── 扫描条 ── */
+.scanbar { display: flex; gap: 8px; align-items: center; padding: 10px 12px 6px; }
+button.primary {
+  flex: 1; padding: 8px 12px; border-radius: var(--radius); cursor: pointer;
+  border: 1px solid var(--brand); background: var(--brand); color: #fff;
+  font-size: 13px; font-weight: 600;
+}
+button.primary:hover { filter: brightness(1.06); }
+button.primary:disabled { opacity: .55; cursor: default; }
+.deep-toggle {
+  display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted);
+  flex: none; user-select: none;
+}
+
+/* ── 标签页 ── */
+.tabs {
+  display: flex; gap: 2px; padding: 0 8px 0; overflow-x: auto;
+  border-bottom: 1px solid var(--line); background: var(--panel);
+  position: sticky; top: 47px; z-index: 9;
+}
+.tabs::-webkit-scrollbar { height: 0; }
+.tab {
+  border: none; background: none; color: var(--muted); cursor: pointer;
+  padding: 7px 9px; font-size: 12px; border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--brand); border-bottom-color: var(--brand); font-weight: 600; }
+.tab .badge {
+  display: inline-block; margin-left: 4px; padding: 0 5px; border-radius: 8px;
+  background: var(--chip); color: var(--muted); font-size: 10px; font-weight: 500;
+}
+.tab.active .badge { background: var(--brand-soft); color: var(--brand); }
+
+/* ── 内容区 ── */
+.content { padding: 12px; }
+.placeholder { color: var(--muted); font-size: 12px; }
+.placeholder p { margin: 0 0 8px; }
+.muted { color: var(--muted); }
+
+.card {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 10px 12px; margin-bottom: 10px;
+}
+.card h3 {
+  margin: 0 0 8px; font-size: 12px; font-weight: 600;
+  color: var(--muted); text-transform: none; letter-spacing: .02em;
+}
+.card h3 .count { color: var(--muted); font-weight: 400; }
+
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; font-size: 12px; }
+.kv dt { color: var(--muted); white-space: nowrap; }
+.kv dd { margin: 0; word-break: break-word; }
+
+.stat-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.stat {
+  flex: 1 1 88px; background: var(--chip); border-radius: 8px;
+  padding: 8px 9px; min-width: 0;
+}
+.stat .v { font-size: 16px; font-weight: 600; line-height: 1.2; word-break: break-word; }
+.stat .k { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+.chip {
+  display: inline-block; padding: 1px 6px; border-radius: 6px;
+  background: var(--chip); color: var(--muted); font-size: 10px;
+  margin: 0 3px 3px 0; white-space: nowrap;
+}
+.chip.high { background: var(--ok-soft); color: var(--ok); }
+.chip.medium { background: var(--warn-soft); color: var(--warn); }
+.chip.low { background: var(--chip); color: var(--muted); }
+.chip.brand { background: var(--brand-soft); color: var(--brand); }
+.chip.danger { background: var(--danger-soft); color: var(--danger); }
+
+.list { display: flex; flex-direction: column; gap: 6px; }
+.item {
+  display: flex; justify-content: space-between; gap: 8px; align-items: flex-start;
+  padding: 7px 9px; background: var(--chip); border-radius: 8px; font-size: 12px;
+}
+.item .main { min-width: 0; flex: 1; }
+.item .title { font-weight: 600; word-break: break-word; }
+.item .sub { color: var(--muted); font-size: 11px; word-break: break-word; }
+.item .right { flex: none; text-align: right; font-size: 11px; color: var(--muted); white-space: nowrap; }
+.item .evidence {
+  font-family: ui-monospace, Consolas, monospace; font-size: 10px;
+  color: var(--muted); word-break: break-all; margin-top: 2px;
+}
+
+.bar { height: 6px; background: var(--chip); border-radius: 4px; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--brand); }
+
+.banner {
+  padding: 8px 10px; border-radius: 8px; font-size: 12px; margin-bottom: 10px;
+  background: var(--warn-soft); color: var(--warn);
+}
+.banner.err { background: var(--danger-soft); color: var(--danger); }
+.banner.ok { background: var(--ok-soft); color: var(--ok); }
+
+.search-input {
+  width: 100%; padding: 6px 9px; border-radius: 8px; font-size: 12px;
+  border: 1px solid var(--line); background: var(--panel); color: var(--text);
+  margin-bottom: 8px;
+}
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 6px; }
+button.ghost {
+  padding: 6px 10px; border-radius: 8px; cursor: pointer; font-size: 12px;
+  border: 1px solid var(--line); background: var(--panel); color: var(--text);
+}
+button.ghost:hover { background: var(--chip); border-color: var(--brand); color: var(--brand); }
+
+.settings label { display: block; font-size: 12px; margin-bottom: 8px; }
+.settings input[type="number"] {
+  width: 80px; padding: 4px 6px; border-radius: 6px; font-size: 12px;
+  border: 1px solid var(--line); background: var(--panel); color: var(--text);
+}
+.settings .hint { color: var(--muted); font-size: 11px; margin: -4px 0 10px; }
+
+details summary { cursor: pointer; font-size: 12px; color: var(--brand); }
+details summary:hover { text-decoration: underline; }
+details pre {
+  max-height: 220px; overflow: auto; font-size: 10px;
+  background: var(--chip); padding: 8px; border-radius: 8px;
+  white-space: pre-wrap; word-break: break-all; margin: 6px 0 0;
+}
+
+/* ── 状态栏 ── */
+.statusbar {
+  display: flex; justify-content: space-between; gap: 8px;
+  padding: 6px 12px; font-size: 11px; border-top: 1px solid var(--line);
+  background: var(--panel); position: sticky; bottom: 0;
+}
+.spinner {
+  display: inline-block; width: 10px; height: 10px; margin-right: 5px;
+  border: 2px solid var(--line); border-top-color: var(--brand);
+  border-radius: 50%; animation: spin .7s linear infinite; vertical-align: -1px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

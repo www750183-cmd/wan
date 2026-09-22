@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>选品侦探</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <div>
+        <div class="brand-name">选品侦探</div>
+        <div class="brand-sub" id="hostLabel">等待扫描…</div>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button id="themeBtn" class="icon-btn" title="切换深浅色" aria-label="切换深浅色">◐</button>
+      <button id="favBtn" class="icon-btn" title="收藏此店铺" aria-label="收藏此店铺">☆</button>
+    </div>
+  </header>
+
+  <div class="scanbar">
+    <button id="scanBtn" class="primary">扫描当前店铺</button>
+    <label class="deep-toggle" title="关闭后只扫主题/应用/像素，不拉产品目录，速度快很多">
+      <input type="checkbox" id="deepToggle" checked>
+      <span>深扫</span>
+    </label>
+  </div>
+
+  <nav class="tabs" id="tabs" role="tablist">
+    <button class="tab active" data-tab="overview" role="tab">概览</button>
+    <button class="tab" data-tab="orders" role="tab">店铺变化</button>
+    <button class="tab" data-tab="apps" role="tab">应用</button>
+    <button class="tab" data-tab="pixels" role="tab">像素</button>
+    <button class="tab" data-tab="products" role="tab">产品</button>
+    <button class="tab" data-tab="winners" role="tab">选品</button>
+    <button class="tab" data-tab="audit" role="tab">审计</button>
+    <button class="tab" data-tab="export" role="tab">导出</button>
+  </nav>
+
+  <main id="content" class="content">
+    <section class="placeholder">
+      <p>点击工具栏上的扩展图标，或在上面按「扫描当前店铺」。</p>
+      <p class="muted">本扩展完全离线运行：不请求任何第三方服务器，签名库内置在扩展里。</p>
+    </section>
+  </main>
+
+  <footer class="statusbar">
+    <span id="statusText" class="muted">就绪</span>
+    <span id="statusMeta" class="muted"></span>
+  </footer>
+
+  <script type="module" src="panel.js"></script>
+</body>
+</html>

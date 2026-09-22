@@ -1,0 +1,21 @@
+{
+  "name": "shopify-scout-cn",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "选品侦探 · Shopify 店铺侦察兵（中文版）—— 零后端、纯离线的 MV3 扩展，无需构建步骤。",
+  "scripts": {
+    "test": "node --test test/run-tests.mjs",
+    "icons": "node tools/make-icons.mjs",
+    "verify": "node tools/verify.mjs",
+    "dry-run": "node tools/dry-run.mjs",
+    "browser": "node tools/browser-test.mjs",
+    "chrome-load": "node tools/chrome-load.mjs",
+    "package": "node tools/package.mjs",
+    "store-assets": "node tools/store-assets.mjs",
+    "check": "node tools/verify.mjs && node --test test/run-tests.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
