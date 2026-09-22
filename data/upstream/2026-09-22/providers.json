@@ -1,0 +1,346 @@
+{
+  "version": "1.1.3",
+  "last_updated": "2026-09-07",
+  "providers": [
+    {
+      "id": "modelscope",
+      "name": "魔搭社区 (ModelScope)",
+      "company": "阿里巴巴",
+      "website": "https://www.modelscope.cn",
+      "console_url": "https://modelscope.cn/my/myaccesstoken",
+      "api_doc_url": "https://modelscope.cn/docs",
+      "base_url": "https://api-inference.modelscope.cn/v1/",
+      "openai_compatible": true,
+      "free_tier_type": "permanent_free",
+      "free_tier_desc": "每日 2000 次免费 API-Inference 调用额度（每日 00:00 UTC+8 自动刷新）",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "提供 Serverless 推理，支持 Qwen2.5 全系列、DeepSeek-R1、DeepSeek-V3 等主流开源大模型"
+    },
+    {
+      "id": "siliconflow",
+      "name": "硅基流动 (SiliconCloud)",
+      "company": "硅基流动",
+      "website": "https://cloud.siliconflow.cn",
+      "console_url": "https://cloud.siliconflow.cn/account/ak",
+      "api_doc_url": "https://docs.siliconflow.cn/",
+      "base_url": "https://api.siliconflow.cn/v1",
+      "openai_compatible": true,
+      "free_tier_type": "permanent_free_and_trial",
+      "free_tier_desc": "永久免费模型子集无限调用（受 RPM 限制）+ 新用户注册/实名赠送 14 元代金券（约 2000 万 Tokens）",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": true,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "免费模型包括 DeepSeek-R1 蒸馏版 (7B/1.5B/8B)、Qwen2.5-7B、GLM-4-9B-Chat、InternLM2.5 等"
+    },
+    {
+      "id": "bigmodel",
+      "name": "智谱 AI 开放平台 (BigModel)",
+      "company": "智谱华章",
+      "website": "https://open.bigmodel.cn",
+      "console_url": "https://open.bigmodel.cn/usercenter/apikeys",
+      "api_doc_url": "https://open.bigmodel.cn/dev/api",
+      "base_url": "https://open.bigmodel.cn/api/paas/v4",
+      "openai_compatible": true,
+      "free_tier_type": "permanent_free",
+      "free_tier_desc": "GLM-4-Flash / GLM-4.7-Flash 永久免费商用；新用户注册认证赠送 2500 万 Tokens 资源包（30天有效）",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "GLM-4-Flash 支持 128K 上下文与高并发，适合作为各类 AI 工具的稳定中文底层"
+    },
+    {
+      "id": "baidu-qianfan",
+      "name": "百度千帆大模型平台",
+      "company": "百度",
+      "website": "https://cloud.baidu.com/product/wenxinworkshop",
+      "console_url": "https://console.bce.baidu.com/qianfan/overview",
+      "api_doc_url": "https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html",
+      "base_url": "https://qianfan.baidubce.com/v2",
+      "openai_compatible": true,
+      "free_tier_type": "permanent_free",
+      "free_tier_desc": "ERNIE-Speed-8K、ERNIE-Speed-128K、ERNIE-Lite-8K/128K、ERNIE-Tiny-8K 全面永久免费",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": true,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "实名认证后开通对应模型在线服务即可免费调用，支持 128K 上下文"
+    },
+    {
+      "id": "xfyun-spark",
+      "name": "讯飞开放平台 (星火认知大模型)",
+      "company": "科大讯飞",
+      "website": "https://xinghuo.xfyun.cn",
+      "console_url": "https://console.xfyun.cn/services/cbm",
+      "api_doc_url": "https://www.xfyun.cn/doc/spark/HTTP.html",
+      "base_url": "https://spark-api-open.xf-yun.com/v1",
+      "openai_compatible": true,
+      "free_tier_type": "permanent_free",
+      "free_tier_desc": "Spark Lite 模型永久免费开放；新认证用户额外赠送 Spark Pro / Max 体验包（约 200 万 Tokens）",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": true,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "中文综合能力优秀，提供标准 HTTP 与 WebSocket 双协议"
+    },
+    {
+      "id": "aliyun-bailian",
+      "name": "阿里云百炼 (DashScope)",
+      "company": "阿里巴巴",
+      "website": "https://bailian.console.aliyun.com",
+      "console_url": "https://bailian.console.aliyun.com/#/api-key",
+      "api_doc_url": "https://help.aliyun.com/document_detail/2753894.html",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "openai_compatible": true,
+      "free_tier_type": "quota_with_expiry",
+      "free_tier_desc": "新用户开通赠送 Qwen 系列主流模型各 100万~200万 Tokens 免费额度（90天有效）",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": true,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "支持 Qwen 全系列（qwen-max / plus / turbo / 72b / coder 等）与 DeepSeek-R1/V3"
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek (深度求索)",
+      "company": "深度求索",
+      "website": "https://platform.deepseek.com",
+      "console_url": "https://platform.deepseek.com/api_keys",
+      "api_doc_url": "https://api-docs.deepseek.com",
+      "base_url": "https://api.deepseek.com",
+      "openai_compatible": true,
+      "free_tier_type": "new_user_trial",
+      "free_tier_desc": "新用户注册赠送 500 万 Tokens（或 10 元代金券，有效期通常为 1 个月）",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "官方原厂 API，推理能力顶尖 (deepseek-reasoner / deepseek-chat)，定价极具性价比"
+    },
+    {
+      "id": "volcengine-ark",
+      "name": "火山引擎大模型服务平台 (豆包)",
+      "company": "字节跳动",
+      "website": "https://console.volcengine.com/ark",
+      "console_url": "https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey",
+      "api_doc_url": "https://www.volcengine.com/docs/82379/1099455",
+      "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+      "openai_compatible": true,
+      "free_tier_type": "quota_with_expiry",
+      "free_tier_desc": "每个模型开通接入点均赠送 50万~500万 Tokens 免费试用额度",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": true,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "涵盖 Doubao-lite / Doubao-pro / Doubao-vision，需要在控制台先创建 Endpoint"
+    },
+    {
+      "id": "moonshot",
+      "name": "Moonshot 开放平台 (Kimi)",
+      "company": "月之暗面",
+      "website": "https://platform.moonshot.cn",
+      "console_url": "https://platform.moonshot.cn/console/api-keys",
+      "api_doc_url": "https://platform.moonshot.cn/docs",
+      "base_url": "https://api.moonshot.cn/v1",
+      "openai_compatible": true,
+      "free_tier_type": "new_user_trial",
+      "free_tier_desc": "新用户注册即赠送 15 元体验额度（有效期内可调用全系列模型）",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "长文本能力出众（moonshot-v1-8k / 32k / 128k）"
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax 开放平台 (海螺 AI)",
+      "company": "稀宇科技",
+      "website": "https://platform.minimaxi.com",
+      "console_url": "https://platform.minimaxi.com/user-center/basic-information/interface-key",
+      "api_doc_url": "https://platform.minimaxi.com/document/ChatCompletion",
+      "base_url": "https://api.minimax.chat/v1",
+      "openai_compatible": true,
+      "free_tier_type": "new_user_trial",
+      "free_tier_desc": "新用户注册认证赠送 15 元额度包",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "提供 MiniMax-Text-01、abab6.5s-chat 等高性能大模型"
+    },
+    {
+      "id": "infini-ai",
+      "name": "无问芯穹 (Infini-AI)",
+      "company": "无问芯穹",
+      "website": "https://cloud.infini-ai.com",
+      "console_url": "https://cloud.infini-ai.com/api-key",
+      "api_doc_url": "https://cloud.infini-ai.com/docs",
+      "base_url": "https://cloud.infini-ai.com/maas/v1",
+      "openai_compatible": true,
+      "free_tier_type": "quota_with_expiry",
+      "free_tier_desc": "新用户赠送免费体验额度，支持 DeepSeek-R1 / V3 与 Qwen2.5 系列",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "国内一站式 AI 算力与模型服务平台，开箱即用"
+    },
+    {
+      "id": "lingyiwanwu",
+      "name": "零一万物 (01.AI)",
+      "company": "零一万物",
+      "website": "https://platform.lingyiwanwu.com",
+      "console_url": "https://platform.lingyiwanwu.com/apikeys",
+      "api_doc_url": "https://platform.lingyiwanwu.com/docs",
+      "base_url": "https://api.lingyiwanwu.com/v1",
+      "openai_compatible": true,
+      "free_tier_type": "new_user_trial",
+      "free_tier_desc": "新用户注册赠送体验金，可调用 Yi-Lightning, Yi-Large 等",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "Yi-Lightning 性能强劲且响应速度极快"
+    },
+    {
+      "id": "sensenova",
+      "name": "商汤日日新 (SenseNova)",
+      "company": "商汤科技",
+      "website": "https://platform.sensenova.cn/",
+      "console_url": "https://platform.sensenova.cn/",
+      "api_doc_url": "https://platform.sensenova.cn/",
+      "base_url": "待确认",
+      "openai_compatible": false,
+      "free_tier_type": "free_points",
+      "free_tier_desc": "当前平台提供约 60 万积分免费额度，可使用 GLM、K3 等模型；免费政策可能调整，请以官方页面为准。",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-07",
+      "note": "中国官方平台，提供 GLM、K3 等模型免费额度体验"
+    },
+    {
+      "id": "amd-developer",
+      "name": "AMD 开发者平台",
+      "company": "AMD (中国)",
+      "website": "https://developer.amd.com.cn",
+      "console_url": "https://developer.amd.com.cn",
+      "api_doc_url": "https://developer.amd.com.cn",
+      "base_url": "待确认",
+      "openai_compatible": false,
+      "free_tier_type": "limited_time_free",
+      "free_tier_desc": "⚠️ 限时免费：当前可免费使用 DeepSeek V4 Flash，活动可能随时结束，建议尽快领取。",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "🔥 限时福利：重点提供 DeepSeek V4 Flash 免费体验"
+    },
+    {
+      "id": "huaweicloud-codearts",
+      "name": "华为云 CodeArts / 码道",
+      "company": "华为云",
+      "website": "https://activity.huaweicloud.com/codearts_agent.html",
+      "console_url": "https://activity.huaweicloud.com/codearts_agent.html",
+      "api_doc_url": "https://activity.huaweicloud.com/codearts_agent.html",
+      "base_url": "待确认",
+      "openai_compatible": false,
+      "free_tier_type": "limited_time_free",
+      "free_tier_desc": "⚡ 限时活动：每人每天免费赠送 1000 万 Tokens，可使用 GLM5.3Flash。活动规则可能调整，请以华为云官方页面为准。",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": true,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-02",
+      "note": "🔥 限时福利：CodeArts / 码道每人每天免费 1000 万 Tokens"
+    },
+    {
+      "id": "z_ai",
+      "name": "Z.ai / ZCode (智谱 GLM 编码计划)",
+      "company": "智谱 AI (Z.ai)",
+      "website": "https://z.ai",
+      "console_url": "https://z.ai",
+      "api_doc_url": "https://z.ai/docs",
+      "base_url": "https://api.z.ai/v1",
+      "openai_compatible": true,
+      "free_tier_type": "limited_time_free",
+      "free_tier_desc": "🔥 限时福利（9月3日~9月20日）：每天太平洋时间 08:00~18:00（北京时间 23:00~次日 09:00），在官方 ZCode ADE 客户端中完全无限制免费使用 GLM-5.3-Flash；在其他支持的编程代理中享受 2x Flash 配额。",
+      "auth_requirements": {
+        "phone_required": false,
+        "real_name_required": false,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-03",
+      "note": "智谱旗下针对编程 Agent 的 ADE 官方桌面环境及编码计划，支持原生多模态与高并发 Tool-use"
+    },
+    {
+      "id": "chinamobile-ecloud",
+      "name": "中国移动 (移动云 MaaS 墨玛)",
+      "company": "中国移动",
+      "website": "https://ecloud.10086.cn",
+      "console_url": "https://ecloud.10086.cn/api/page/maas/moma/modelSquare",
+      "api_doc_url": "https://ecloud.10086.cn/api/page/maas/moma/modelSquare",
+      "base_url": "待控制台开通获取",
+      "openai_compatible": true,
+      "free_tier_type": "free_quota_trial",
+      "free_tier_desc": "新开通/体验免费赠送 2500 万 Tokens 大模型额度包（用于体验 DeepSeek-V4-Flash-0731 等前沿模型）",
+      "auth_requirements": {
+        "phone_required": true,
+        "real_name_required": true,
+        "credit_card_required": false,
+        "recharge_required": false
+      },
+      "last_verified": "2026-09-03",
+      "note": "中国移动旗下算网智算平台，全面上架 DeepSeek V4 系列，赠送 2500 万 Tokens 资源包"
+    }
+  ]
+}
